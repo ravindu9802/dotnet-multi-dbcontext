@@ -5,13 +5,13 @@ namespace dotnet_dbcontext.Entities;
 
 public class OrderContext : DbContext
 {
-    public OrderContext(DbContextOptions<OrderContext> context)
-        : base() { }
+    public OrderContext(DbContextOptions<OrderContext> options)
+        : base(options) { }
 
     public DbSet<Order> Orders {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.HasDefaultSchema("order");
     }
 }
